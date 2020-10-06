@@ -23,18 +23,9 @@ test('counter increments and decrements when the buttons are clicked', () => {
   expect(message.textContent).toBe('Current count: 0')
 
   // 🐨 replace the next two statements with `fireEvent.click(button)`
-  const incrementClickEvent = new MouseEvent('click', {
-    bubbles: true,
-    cancelable: true,
-    button: 0,
-  })
-  increment.dispatchEvent(incrementClickEvent)
+  fireEvent.click(increment)
   expect(message.textContent).toBe('Current count: 1')
-  const decrementClickEvent = new MouseEvent('click', {
-    bubbles: true,
-    cancelable: true,
-    button: 0,
-  })
-  decrement.dispatchEvent(decrementClickEvent)
+
+  fireEvent.click(decrement)
   expect(message.textContent).toBe('Current count: 0')
 })
