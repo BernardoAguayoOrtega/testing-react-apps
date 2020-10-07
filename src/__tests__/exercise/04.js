@@ -3,6 +3,7 @@
 
 import React from 'react'
 import {render, screen} from '@testing-library/react'
+import faker from 'faker'
 import userEvent from '@testing-library/user-event'
 import Login from '../../components/login'
 
@@ -17,21 +18,25 @@ test('submitting the form calls onSubmit with username and password', () => {
   // 🐨 get the username and password fields via `getByLabelText`
   const userName = screen.getByLabelText(/username/i)
 
-  const password = screen.getByLabelText(/password/i)
+  const Password = screen.getByLabelText(/password/i)
 
   const submitButton = screen.getByRole('button', {name: /submit/i})
 
-  userEvent.type(userName, 'test')
+  const username = faker.internet.userName()
 
-  userEvent.type(password, '123456')
+  const password = faker.internet.password()
+
+  userEvent.type(userName, username)
+
+  userEvent.type(Password, password)
 
   userEvent.click(submitButton)
   // assert that submittedData is correct
   // 💰 use `toEqual` from Jest: 📜 https://jestjs.io/docs/en/expect#toequalvalue
 
   expect(handleSubmit).toHaveBeenCalledWith({
-    username: 'test',
-    password: '123456',
+    username,
+    password,
   })
 })
 
