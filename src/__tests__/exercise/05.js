@@ -3,10 +3,12 @@
 
 import React from 'react'
 // 🐨 you'll need to grab waitForElementToBeRemoved from '@testing-library/react'
-import {render, screen} from '@testing-library/react'
+import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import {build, fake} from '@jackfranklin/test-data-bot'
 // 🐨 you'll need to import rest from 'msw' and setupServer from msw/node
+import {rest} from 'msw'
+import {setupServer} from 'msw'
 import Login from '../../components/login-submission'
 
 const buildLoginForm = build({
