@@ -26,6 +26,11 @@ test('exposes the count and increment/decrement functions', () => {
   const decrement = screen.getByRole('button', {name: /decrement/i})
   const message = screen.getByText(/current count/i)
   // 🐨 assert on the initial state of the hook
+  expect(message).toHaveTextContent(/current count: 0/i)
+  userEvent.click(increment)
+  expect(message).toHaveTextContent(/current count: 1/i)
+  userEvent.click(decrement)
+  expect(message).toHaveTextContent(/current count: 0/i)
   // 🐨 interact with the UI using userEvent and assert on the changes in the UI
 })
 
