@@ -34,6 +34,8 @@ test('displays the users current location', async () => {
   render(<Location />)
 
   screen.debug()
+
+  expect(screen.getByLabelText(/loading/i)).toBeInTheDocument()
 })
 
 /*
