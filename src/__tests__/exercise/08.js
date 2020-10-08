@@ -32,6 +32,7 @@ test('exposes the count and increment/decrement functions', () => {
   userEvent.click(decrement)
   expect(message).toHaveTextContent(/current count: 0/i)
   // 🐨 interact with the UI using userEvent and assert on the changes in the UI
-})
+}) 
+//TEST
 
 /* eslint no-unused-vars:0 */
