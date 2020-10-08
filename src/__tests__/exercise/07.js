@@ -6,10 +6,16 @@ import {render, screen} from '@testing-library/react'
 import {ThemeProvider} from '../../components/theme'
 import EasyButton from '../../components/easy-button'
 
-test('renders with the light styles for the light theme', () => {
-  const Wrapper = ({children}) => <ThemeProvider>{children}</ThemeProvider>
+function renderWithTheme({theme = 'light'} = {}) {
+  const Wrapper = ({children}) => (
+    <ThemeProvider initialTheme={theme}>{children}</ThemeProvider>
+  )
 
   render(<EasyButton>Easy</EasyButton>, {wrapper: Wrapper})
+}
+
+test('renders with the light styles for the light theme', () => {
+  renderWithTheme()
 
   const button = screen.getByRole('button', {name: /easy/i})
 
